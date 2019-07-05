@@ -16,12 +16,26 @@ function GameComponent() {
     setGames(...games, _orderBy(Games, ['featured', 'name'], ['desc', 'asc']));
   };
 
-  const game = games.map(item => {
-    return <GameCard key={uuidv4()} id={uuidv4()} {...item} />;
-  });
+  // const handleToggle = id => {
+  //   // games.map(item => {
+  //   //   if (item.id === id) {
+  //   //     setGames({ ...item, featured: !item.featured });
+  //   //   }
+  //   // });
+  //   setGames(
+  //     ...games.map(game =>
+  //       game.id === id ? (game.featured = !game.featured) : game,
+  //     ),
+  //   );
+  // };
+
+  const game = () =>
+    games.map(item => {
+      return <GameCard key={uuidv4()} {...item} />;
+    });
 
   return games.length > 0 ? (
-    <div className="card-deck row">{game.length === 0 ? 'game' : game}</div>
+    <div className="card-deck row">{game().length === 0 ? 'game' : game()}</div>
   ) : (
     <div className="container">
       <IsLoading />
@@ -46,5 +60,7 @@ GameComponent.propTypes = {
 };
 GameComponent.defaultProps = {
   Games: [],
+  game: [],
+  games: [],
 };
 export default GameComponent;

@@ -6,7 +6,10 @@ class IsLoading extends React.Component {
     return (
       <figure>
         <div className="spinner-borders m-5" role="status">
-          <figcaption class="figure-caption lead">
+          <figcaption
+            style={{ color: 'black', fontSize: '8em !important' }}
+            className="figure-caption lead"
+          >
             We are attempting to fetch available games ...
           </figcaption>
           <img

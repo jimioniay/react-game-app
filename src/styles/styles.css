@@ -44,6 +44,19 @@ svg {
 }
 /*Remove that CSS*/
 
+/* .button-link {
+  margin: 0px;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+  border is optional
+  border-bottom:1px solid #444; 
+  cursor: pointer;
+  display: inline;
+} */
+
 button {
   margin: 20px 0;
   line-height: 34px;

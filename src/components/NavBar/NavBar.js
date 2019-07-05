@@ -1,15 +1,15 @@
 import React from 'react';
 
-export default function NavBar() {
+export default function NavBar({ handleShowAddGame, showAddGame }) {
   return (
     <nav
       className="navbar navbar-expand-sm navbar-light sticky-top"
       style={{ backgroundColor: '#e3f2fd' }}
     >
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand button-link" href="#">
         Navbar
       </a>
-      <button
+      <a
         className="navbar-toggler d-lg-none"
         type="button"
         data-toggle="collapse"
@@ -21,18 +21,35 @@ export default function NavBar() {
       <div className="collapse navbar-collapse" id="collapsibleNavId">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
-              Home <span className="sr-only">(current)</span>
+            <a className="nav-link button-link" href="#">
+              Home <span className="sr-onl button-link">(current)</span>
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Link
+            <a
+              className="nav-link d-flex button-link"
+              href="#"
+              onClick={handleShowAddGame}
+            >
+              <i className="fa fa-plus" aria-hidden="true" />
+              {'    '}
+              <p>&nbsp; {showAddGame ? 'Remove "Add Game"' : 'Add Game'}</p>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a
+              className="nav-link d-flex button-link"
+              href="#"
+              onClick={handleShowAddGame}
+            >
+              <i className="fa fa-users" aria-hidden="true" />
+              {'    '}
+              <p>&nbsp; Login/SignUp</p>
             </a>
           </li>
           <li className="nav-item dropdown">
             <a
-              className="nav-link dropdown-toggle"
+              className="nav-link dropdown-toggle button-link"
               href="#"
               id="dropdownId"
               data-toggle="dropdown"
@@ -42,10 +59,10 @@ export default function NavBar() {
               Dropdown
             </a>
             <div className="dropdown-menu" aria-labelledby="dropdownId">
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item button-link" href="#">
                 Action 1
               </a>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item button-link" href="#">
                 Action 2
               </a>
             </div>
@@ -60,12 +77,12 @@ export default function NavBar() {
             />
           </div>
           <div>
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
+            <a
+              className="btn btn-outline-success my-2 my-sm-0 button-link"
               type="submit"
             >
               Search
-            </button>
+            </a>
           </div>
         </form>
       </div>

@@ -202,7 +202,7 @@ GameFormContainer.propTypes = {
   errors: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
-  handleShowAddGame: PropTypes.func.isRequired,
+  handleShowAddGame: PropTypes.func,
 };
 
 GameFormContainer.defaultProps = {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Price from './Price';
 import Featured from './Featured';
@@ -50,9 +51,13 @@ function GameCard({
         <img src={thumbnail} className="card-img-top" alt="..." />
       )}
       <div className="card-body">
-        <a href="/" className="card-title" style={{ fontSize: '1.5em' }}>
+        <Link
+          to={`/game/${_id}`}
+          className="card-title"
+          style={{ fontSize: '1.5em' }}
+        >
           {name}
-        </a>
+        </Link>
         <p className="card-text lead">
           {players} &nbsp;<span className="text-muted display-6">players</span>
         </p>

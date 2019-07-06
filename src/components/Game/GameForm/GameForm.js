@@ -23,18 +23,27 @@ class GameForm extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.selectedGame);
-    if (Object.keys(this.props.selectedGame).length > 0) {
+    const { selectedGame } = this.props;
+    console.log('cmpdid mount', this.props.errors);
+    if (Object.keys(selectedGame).length > 0) {
       this.setState({
-        data: { ...this.props.selectedGame },
+        data: { ...selectedGame },
       });
     }
+  }
+
+  componentWillReceiveProps(prevState) {
+    console.log('compreceporops', this.props.errors);
+    console.log(prevState.errors);
+    // if (prevState.error){
+
+    // }
   }
 
   validateForm = data => {
     const errors = {};
     if (!data.name) {
-      errors.content = 'Please this field must be supplied';
+      errors.name = 'Please this field must be supplied';
     }
     if (!data.description) {
       errors.description = `Please this field must be supplied`;
@@ -54,6 +63,7 @@ class GameForm extends React.Component {
   // };
 
   handleChange = e => {
+    console.log('props in handleCHange: ', this.props);
     const { name, type, checked, value } = e.target;
     e.preventDefault();
     if (type === 'checkbox') {
@@ -72,13 +82,12 @@ class GameForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // const errors = this.validateForm(this.state.data);
-    const errors = {};
-    this.setState({ errors: errors });
-    if (Object.keys(errors).length === 0) {
-      this.props
-        .addGame(this.state.data)
-        .catch(err => console.log('error in addGame: ', err));
+    const errors = this.validateForm(this.state.data);
+    // const errors = {};
+    console.log('error from server: ', this.props.error);
+    this.setState({ errors: errors || this.props.error });
+    if (Object.keys(errors).length === 0 || this.props.err) {
+      this.props.addGame(this.state.data);
     }
   };
   render() {
@@ -94,5 +103,9 @@ class GameForm extends React.Component {
     );
   }
 }
+
+GameForm.defaultProps = {
+  selectedGame: {},
+};
 
 export default GameForm;
